@@ -40,15 +40,15 @@
                 <h2><span>Recent Post</span></h2>
                 <div class="singleleft_inner">
                   <ul class="recentpost_nav wow fadeInDown">
-                    <li><a href="#"><img src="images/150x80.jpg" alt=""></a> <a class="recent_title" href="#"> Curabitur ac dictum nisl eu hendrerit ante</a></li>
-                    <li><a href="#"><img src="images/150x80.jpg" alt=""></a> <a class="recent_title" href="#"> Curabitur ac dictum nisl eu hendrerit ante</a></li>
-                    <li><a href="#"><img src="images/150x80.jpg" alt=""></a> <a class="recent_title" href="#"> Curabitur ac dictum nisl eu hendrerit ante</a></li>
+                    <li><a href="#"><img src="/arte/imagenesJo/150x80.jpg" alt=""></a> <a class="recent_title" href="#"> Curabitur ac dictum nisl eu hendrerit ante</a></li>
+                    <li><a href="#"><img src="/arte/imagenesJo/150x80.jpg" alt=""></a> <a class="recent_title" href="#"> Curabitur ac dictum nisl eu hendrerit ante</a></li>
+                    <li><a href="#"><img src="/arte/imagenesJo/150x80.jpg" alt=""></a> <a class="recent_title" href="#"> Curabitur ac dictum nisl eu hendrerit ante</a></li>
                   </ul>
                 </div>
               </div>
               <div class="single_leftbar wow fadeInDown">
                 <h2><span>Side Add</span></h2>
-                <div class="singleleft_inner"> <a href="#"><img src="images/150x600.jpg" alt=""></a></div>
+                <div class="singleleft_inner"> <a href="#"><img src="/arte/imagenesJo/150x600.jpg" alt=""></a></div>
               </div>
             </div>
           </div>
@@ -381,6 +381,21 @@
                     </nt:body-splitter>
 		</p>
 		
+		<p>
+		    <nt:tags-list separator=",">
+                        <nt:conditional-include onposition="1">
+                            <div class="tagBarNews" itemprop="keywords" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                                <h4>Tags</h4>
+                        </nt:conditional-include>
+                        <a class="btn btn-default" href="/tags/<nt:tags-item/>" alt="<nt:tags-item/>" title="<nt:tags-item/>" itemprop="title">
+                            <nt:tags-item/>
+                        </a>
+                        <nt:conditional-include onposition="last">
+                            </div>
+                        </nt:conditional-include>
+                    </nt:tags-list>
+                </p>   
+                
                 <div class="social_area wow fadeInLeft">
                   <ul>
                     <li><a href="#"><span class="fa fa-facebook"></span></a></li>
@@ -424,11 +439,18 @@
                           
                 </ul>
             </div>
+            
+	    <div class="single_post_content">
+	    	<%-- bloque de comentarios --%>
+                <cms:include page="TS_Article_CommentsJo.jsp" />
+            </div>
+                                      
+                                      
             <div class="clearfix"></div>
                   <%-- ul class="recentpost_nav relatedpost_nav wow fadeInDown animated">
-                    <li><a href="#"><img alt="" src="images/150x80.jpg"></a> <a href="#" class="recent_title"> Curabitur ac dictum nisl eu hendrerit ante</a></li>
-                    <li><a href="#"><img alt="" src="images/150x80.jpg"></a> <a href="#" class="recent_title"> Curabitur ac dictum nisl eu hendrerit ante</a></li>
-                    <li><a href="#"><img alt="" src="images/150x80.jpg"></a> <a href="#" class="recent_title"> Curabitur ac dictum nisl eu hendrerit ante</a></li>
+                    <li><a href="#"><img alt="" src="/arte/imagenesJo/150x80.jpg"></a> <a href="#" class="recent_title"> Curabitur ac dictum nisl eu hendrerit ante</a></li>
+                    <li><a href="#"><img alt="" src="/arte/imagenesJo/150x80.jpg"></a> <a href="#" class="recent_title"> Curabitur ac dictum nisl eu hendrerit ante</a></li>
+                    <li><a href="#"><img alt="" src="/arte/imagenesJo/150x80.jpg"></a> <a href="#" class="recent_title"> Curabitur ac dictum nisl eu hendrerit ante</a></li>
                   </ul --%>
                 </div>
               </div>
@@ -443,52 +465,52 @@
                 <div class="singleleft_inner">
                   <ul class="catg3_snav ppost_nav wow fadeInDown">
                     <li>
-                      <div class="media"> <a href="#" class="media-left"> <img alt="" src="images/70x70.jpg"> </a>
+                      <div class="media"> <a href="#" class="media-left"> <img alt="" src="/arte/imagenesJo/70x70.jpg"> </a>
                         <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a></div>
                       </div>
                     </li>
                     <li>
-                      <div class="media"> <a href="#" class="media-left"> <img alt="" src="images/70x70.jpg"> </a>
+                      <div class="media"> <a href="#" class="media-left"> <img alt="" src="/arte/imagenesJo/70x70.jpg"> </a>
                         <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a></div>
                       </div>
                     </li>
                     <li>
-                      <div class="media"> <a href="#" class="media-left"> <img alt="" src="images/70x70.jpg"> </a>
+                      <div class="media"> <a href="#" class="media-left"> <img alt="" src="/arte/imagenesJo/70x70.jpg"> </a>
                         <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a></div>
                       </div>
                     </li>
                     <li>
-                      <div class="media"> <a href="#" class="media-left"> <img alt="" src="images/70x70.jpg"> </a>
+                      <div class="media"> <a href="#" class="media-left"> <img alt="" src="/arte/imagenesJo/70x70.jpg"> </a>
                         <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a></div>
                       </div>
                     </li>
                     <li>
-                      <div class="media"> <a href="#" class="media-left"> <img alt="" src="images/70x70.jpg"> </a>
+                      <div class="media"> <a href="#" class="media-left"> <img alt="" src="/arte/imagenesJo/70x70.jpg"> </a>
                         <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a></div>
                       </div>
                     </li>
                     <li>
-                      <div class="media"> <a href="#" class="media-left"> <img alt="" src="images/70x70.jpg"> </a>
+                      <div class="media"> <a href="#" class="media-left"> <img alt="" src="/arte/imagenesJo/70x70.jpg"> </a>
                         <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a></div>
                       </div>
                     </li>
                     <li>
-                      <div class="media"> <a href="#" class="media-left"> <img alt="" src="images/70x70.jpg"> </a>
+                      <div class="media"> <a href="#" class="media-left"> <img alt="" src="/arte/imagenesJo/70x70.jpg"> </a>
                         <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a></div>
                       </div>
                     </li>
                     <li>
-                      <div class="media"> <a href="#" class="media-left"> <img alt="" src="images/70x70.jpg"> </a>
+                      <div class="media"> <a href="#" class="media-left"> <img alt="" src="/arte/imagenesJo/70x70.jpg"> </a>
                         <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a></div>
                       </div>
                     </li>
                     <li>
-                      <div class="media"> <a href="#" class="media-left"> <img alt="" src="images/70x70.jpg"> </a>
+                      <div class="media"> <a href="#" class="media-left"> <img alt="" src="/arte/imagenesJo/70x70.jpg"> </a>
                         <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a></div>
                       </div>
                     </li>
                     <li>
-                      <div class="media"> <a href="#" class="media-left"> <img alt="" src="images/70x70.jpg"> </a>
+                      <div class="media"> <a href="#" class="media-left"> <img alt="" src="/arte/imagenesJo/70x70.jpg"> </a>
                         <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a></div>
                       </div>
                     </li>
@@ -497,7 +519,7 @@
               </div>
               <div class="single_leftbar wow fadeInDown">
                 <h2><span>Side Ad</span></h2>
-                <div class="singleleft_inner"> <a href="#"><img alt="" src="images/262x218.jpg"></a></div>
+                <div class="singleleft_inner"> <a href="#"><img alt="" src="/arte/imagenesJo/262x218.jpg"></a></div>
               </div>
               <div class="single_leftbar wow fadeInDown">
                 <ul class="nav nav-tabs custom-tabs" role="tablist">
@@ -509,37 +531,37 @@
                   <div role="tabpanel" class="tab-pane fade in active" id="home">
                     <ul class="catg3_snav ppost_nav wow fadeInDown">
                       <li>
-                        <div class="media"> <a class="media-left" href="#"> <img src="images/70x70.jpg" alt=""> </a>
+                        <div class="media"> <a class="media-left" href="#"> <img src="/arte/imagenesJo/70x70.jpg" alt=""> </a>
                           <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
                         </div>
                       </li>
                       <li>
-                        <div class="media"> <a class="media-left" href="#"> <img src="images/70x70.jpg" alt=""> </a>
+                        <div class="media"> <a class="media-left" href="#"> <img src="/arte/imagenesJo/70x70.jpg" alt=""> </a>
                           <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
                         </div>
                       </li>
                       <li>
-                        <div class="media"> <a class="media-left" href="#"> <img src="images/70x70.jpg" alt=""> </a>
+                        <div class="media"> <a class="media-left" href="#"> <img src="/arte/imagenesJo/70x70.jpg" alt=""> </a>
                           <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
                         </div>
                       </li>
                       <li>
-                        <div class="media"> <a class="media-left" href="#"> <img src="images/70x70.jpg" alt=""> </a>
+                        <div class="media"> <a class="media-left" href="#"> <img src="/arte/imagenesJo/70x70.jpg" alt=""> </a>
                           <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
                         </div>
                       </li>
                       <li>
-                        <div class="media"> <a class="media-left" href="#"> <img src="images/70x70.jpg" alt=""> </a>
+                        <div class="media"> <a class="media-left" href="#"> <img src="/arte/imagenesJo/70x70.jpg" alt=""> </a>
                           <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
                         </div>
                       </li>
                       <li>
-                        <div class="media"> <a class="media-left" href="#"> <img src="images/70x70.jpg" alt=""> </a>
+                        <div class="media"> <a class="media-left" href="#"> <img src="/arte/imagenesJo/70x70.jpg" alt=""> </a>
                           <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
                         </div>
                       </li>
                       <li>
-                        <div class="media"> <a class="media-left" href="#"> <img src="images/70x70.jpg" alt=""> </a>
+                        <div class="media"> <a class="media-left" href="#"> <img src="/arte/imagenesJo/70x70.jpg" alt=""> </a>
                           <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
                         </div>
                       </li>
@@ -548,27 +570,27 @@
                   <div role="tabpanel" class="tab-pane fade" id="profile">
                     <ul class="catg3_snav ppost_nav wow fadeInDown">
                       <li>
-                        <div class="media"> <a class="media-left" href="#"> <img src="images/70x70.jpg" alt=""> </a>
+                        <div class="media"> <a class="media-left" href="#"> <img src="/arte/imagenesJo/70x70.jpg" alt=""> </a>
                           <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
                         </div>
                       </li>
                       <li>
-                        <div class="media"> <a class="media-left" href="#"> <img src="images/70x70.jpg" alt=""> </a>
+                        <div class="media"> <a class="media-left" href="#"> <img src="/arte/imagenesJo/70x70.jpg" alt=""> </a>
                           <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
                         </div>
                       </li>
                       <li>
-                        <div class="media"> <a class="media-left" href="#"> <img src="images/70x70.jpg" alt=""> </a>
+                        <div class="media"> <a class="media-left" href="#"> <img src="/arte/imagenesJo/70x70.jpg" alt=""> </a>
                           <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
                         </div>
                       </li>
                       <li>
-                        <div class="media"> <a class="media-left" href="#"> <img src="images/70x70.jpg" alt=""> </a>
+                        <div class="media"> <a class="media-left" href="#"> <img src="/arte/imagenesJo/70x70.jpg" alt=""> </a>
                           <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
                         </div>
                       </li>
                       <li>
-                        <div class="media"> <a class="media-left" href="#"> <img src="images/70x70.jpg" alt=""> </a>
+                        <div class="media"> <a class="media-left" href="#"> <img src="/arte/imagenesJo/70x70.jpg" alt=""> </a>
                           <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
                         </div>
                       </li>
@@ -577,37 +599,37 @@
                   <div role="tabpanel" class="tab-pane fade" id="messages">
                     <ul class="catg3_snav ppost_nav wow fadeInDown">
                       <li>
-                        <div class="media"> <a class="media-left" href="#"> <img src="images/70x70.jpg" alt=""> </a>
+                        <div class="media"> <a class="media-left" href="#"> <img src="/arte/imagenesJo/70x70.jpg" alt=""> </a>
                           <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
                         </div>
                       </li>
                       <li>
-                        <div class="media"> <a class="media-left" href="#"> <img src="images/70x70.jpg" alt=""> </a>
+                        <div class="media"> <a class="media-left" href="#"> <img src="/arte/imagenesJo/70x70.jpg" alt=""> </a>
                           <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
                         </div>
                       </li>
                       <li>
-                        <div class="media"> <a class="media-left" href="#"> <img src="images/70x70.jpg" alt=""> </a>
+                        <div class="media"> <a class="media-left" href="#"> <img src="/arte/imagenesJo/70x70.jpg" alt=""> </a>
                           <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
                         </div>
                       </li>
                       <li>
-                        <div class="media"> <a class="media-left" href="#"> <img src="images/70x70.jpg" alt=""> </a>
+                        <div class="media"> <a class="media-left" href="#"> <img src="/arte/imagenesJo/70x70.jpg" alt=""> </a>
                           <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
                         </div>
                       </li>
                       <li>
-                        <div class="media"> <a class="media-left" href="#"> <img src="images/70x70.jpg" alt=""> </a>
+                        <div class="media"> <a class="media-left" href="#"> <img src="/arte/imagenesJo/70x70.jpg" alt=""> </a>
                           <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
                         </div>
                       </li>
                       <li>
-                        <div class="media"> <a class="media-left" href="#"> <img src="images/70x70.jpg" alt=""> </a>
+                        <div class="media"> <a class="media-left" href="#"> <img src="/arte/imagenesJo/70x70.jpg" alt=""> </a>
                           <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
                         </div>
                       </li>
                       <li>
-                        <div class="media"> <a class="media-left" href="#"> <img src="images/70x70.jpg" alt=""> </a>
+                        <div class="media"> <a class="media-left" href="#"> <img src="/arte/imagenesJo/70x70.jpg" alt=""> </a>
                           <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
                         </div>
                       </li>
@@ -680,17 +702,17 @@
             <h2>Popular Post</h2>
             <ul class="catg3_snav ppost_nav">
               <li>
-                <div class="media"> <a class="media-left" href="#"> <img src="images/70x70.jpg" alt=""> </a>
+                <div class="media"> <a class="media-left" href="#"> <img src="/arte/imagenesJo/70x70.jpg" alt=""> </a>
                   <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
                 </div>
               </li>
               <li>
-                <div class="media"> <a class="media-left" href="#"> <img src="images/70x70.jpg" alt=""> </a>
+                <div class="media"> <a class="media-left" href="#"> <img src="/arte/imagenesJo/70x70.jpg" alt=""> </a>
                   <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
                 </div>
               </li>
               <li>
-                <div class="media"> <a class="media-left" href="#"> <img src="images/70x70.jpg" alt=""> </a>
+                <div class="media"> <a class="media-left" href="#"> <img src="/arte/imagenesJo/70x70.jpg" alt=""> </a>
                   <div class="media-body"> <a class="catg_title" href="#"> Aliquam malesuada diam eget turpis varius</a></div>
                 </div>
               </li>
@@ -746,5 +768,6 @@
 
 
 </nt:news>
+
 </body>
 </html>

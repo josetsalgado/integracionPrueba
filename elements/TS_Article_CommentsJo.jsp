@@ -21,8 +21,9 @@
         e.printStackTrace();
     }
 %>
-<link rel="stylesheet" href="/system/modules/com.tfsla.diario.telesur/resources/css/navigataur.css" />
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+<!--<link rel="stylesheet" href="/system/modules/com.tfsla.diario.telesur/resources/css/navigataur.css" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
 <script>
   window.fbAsyncInit = function() {
     FB.init({
@@ -61,7 +62,7 @@
             // alert("btn-facebook");
             $("#comentNativos").addClass("coment");
             $("#btn-face").addClass("activeComent");
-            $(".fb_ltr").css({width: "940px"});
+            //$(".fb_ltr").css({width: "940px"});
             $("#comentFace").removeClass("coment");
             $("#btn-nativo").removeClass("activeComent");
 
@@ -76,48 +77,54 @@
         });
     });
 </script>
-<div class="contner">
-    <div class="clearfix">
-        <nt:news>
-            <div class="nav">
-                <input type="checkbox" id="toggle" />
-                <label for="toggle" class="toggle" onclick></label>
-                <ul class="menu">
-                    <li id="btn-face" class="">
-                        <a id="btn-cf" href="#.">
-                            <span class="icofb"> </span>
-                            Comentarios con facebook   (<span class="fb-comments-count" data-href="http://www.telesurtv.net<nt:link/>"></span>)</a>
-                    </li>
-                    <li id="btn-nativo" class="">
-                        <a id="btn-cn" href="#.">
-                            <span class="icots"> </span>
-                             Comentarios con teleSUR (${news.commentcount})</a>
-                    </li>
+<div class="single_leftbar wow fadeInDown">
+ <nt:news>
+
+                
+                
+                <ul class="nav nav-tabs custom-tabs" role="tablist">
+                  <li role="presentation" class="active">
+                      <a href="#home" aria-controls="home" role="tab" data-toggle="tab">
+                       <span class="icofb"> </span>
+                          Comentarios con facebook   (<span class="fb-comments-count" data-href="http://www.telesurtv.net<nt:link/>"></span>)
+                      </a>
+                  </li>
+                  <li role="presentation">
+                      <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">
+                      <span class="icots"> </span>
+                             Comentarios con teleSUR (${news.commentcount})
+                       </a>
+                   </li>
+                 
                 </ul>
-            </div><!-- End of Navigation -->
-    </div><!-- End of Header -->
-    <div class="comentArtic">
-        <div id="comentFace">
-            <div class="wrapper">
-                </br> 
-                <div class="row clear"> 
-                    <div class="fb-comments" data-href="http://www.telesurtv.net<nt:link/>" data-width="940" data-numposts="10" data-colorscheme="light"></div>             
-                </div>
-                </nt:news>
-            </div>
-        </div>
-        <div id="comentNativos"> 
-            <nt:news>
-                <nt:conditional-include oncondition="${news.hideComments == 'false' }">			
-                    <!--comment-->
-                    <div class="wrapper">
-                        <div class="row clear">
-                            <div class="col">
-                                <div style="margin:30px 0"></div>                
-                                <div class="col" >
-                                    <div class="cont">
-                                        <div class="comsup">
-                                            <div class="titcomment">
+                
+    
+                <div class="tab-content">
+                  <div role="tabpanel" class="tab-pane fade in active" id="home">
+                    <ul class="catg3_snav ppost_nav wow fadeInDown">
+                      <li>
+                        <div class="media">
+                            <div id="comentFace">
+			        <div class="wrapper">
+			            </br> 
+			            <div class="row clear"> 
+			                <div class="fb-comments" data-href="http://www.telesurtv.net<nt:link/>" data-colorscheme="light"></div>             
+			            </div>
+			            </nt:news>
+			        </div>
+			    </div>
+			</div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div role="tabpanel" class="tab-pane fade in " id="profile">
+                    <ul class="catg3_snav ppost_nav wow fadeInDown">
+                      <li>
+                          <nt:news>
+		              <nt:conditional-include oncondition="${news.hideComments == 'false' }">			
+                                  <div class="cont">
+                                      <div class="comsup">
+                                          <div class="titcomment">
                                                 <div class="titlecom" id="comentarios">Comentarios</div>
                                                 <div class="gblogrs">
                                                     <div class="num">${news.commentcount}</div>
@@ -125,8 +132,11 @@
                                                 </div>	                                    
                                             </div>
                                             <% if ((guestCanComment && !userIsLoggedIn) || userIsLoggedIn) { %>
-                                            	<nt:comments-form style="TS-ES" lazyload="true" />
+
+                                            <nt:comments-form style="TS-ES" lazyload="true" />
+
                                             <% } else {%>        
+
                                             <div class="signin desktop">
                                                 <p>Ingresa o Regístrate para poder comentar, usar el foro y más</p>
                                                 <div class="btnConf"> <a href="<cms:link>/usuarios/login_nativo.html</cms:link>?R=<nt:link/>" alt="Ingresar" title="Ingresar">Ingresar</a> <a href="<cms:link>/usuarios/registracion.html</cms:link>" alt="Regístrate" title="Regístrate">Regístrate</a> </div>
@@ -144,7 +154,9 @@
                                                 </div>
                                                 <div class="clear"></div>
                                             </div>
+
                                             <% } %>
+
                                             <nt:conditional-include oncondition="${news.commentcount > 0}">
                                                 <div class="orderblog"> Ordenar por  
                                                     <ul class="idTabs"> 
@@ -164,7 +176,8 @@
                                                     <nt:comments-list page="" url="${param.path}"  withMoreAnswers="true" minAnswers="2">
                                                         <% countComment++; %>
                                                     </nt:comments-list>
-                                                    <% if (countComment == 0) { %>                                                    <div class="row clear">
+                                                    <% if (countComment == 0) { %>
+                                                    <div class="row clear">
                                                         <div class="col">
                                                             <div style="margin:30px 0"></div>                
                                                             <div class="col">	                    
@@ -175,7 +188,7 @@
                                                         </div>
                                                     </div>
                                                     <% } else { %>	
-                                                    <nt:comments-box style="TS-ES" withMoreAnswers="true" minAnswers="2"/>
+                                                        <nt:comments-box style="TS-ES" withMoreAnswers="true" minAnswers="2"/>
                                                     <% }%>		
                                                 </div>
                                             </nt:conditional-include>
@@ -193,15 +206,10 @@
                                                 </div>		
                                             </nt:conditional-include>	                            	
                                         </div>
-                                    </div>        
-                                </div>	    			
-                            </div>
-                        </div>
-                    </div>    
-                    <!--FIN comment-->	    
-                </nt:conditional-include> 
-
-                <nt:conditional-include oncondition="${news.hideComments != 'false' }">
+                                    </div>
+                                     </nt:conditional-include> 
+                                     
+                                     <nt:conditional-include oncondition="${news.hideComments != 'false' }">
                     <!--comment-->
                     <div class="wrapper">
                         <div class="row clear">
@@ -221,6 +229,14 @@
                     <!--FIN comment-->	
                 </nt:conditional-include>  
             </nt:news>
-        </div>
-    </div>
-</div><!-- End of Container -->
+                      </li>
+                      
+                    </ul>
+                  </div>
+                  
+                </div>
+              </div>
+              
+              
+
+
