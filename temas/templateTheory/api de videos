@@ -1,0 +1,155 @@
+api de videos
+
+
+//series
+jQuery.fn.series = function(){
+   
+   var path    = "//multimedia.telesurtv.net/api/clip/?callback=?";
+   var categoria  = "";
+   var fecha   = "";
+   var descripcion = "";
+   var $FRAME  = "";
+   var $ASIDE  = "";
+   var tipo = "";
+   
+   $.getJSON(path,{
+      detalle:"completo",
+      seleccionado:"true",
+      ultimo:"5"
+   })
+   .done(function(data){
+      $.each(data,function(i){
+   
+         categoria_slug = (data[i].categoria==null?'':data[i].categoria.slug);
+         categoria_nombre= (data[i].categoria==null?'':data[i].categoria.nombre);
+         tipo     = (data[i].tipo==null?'':data[i].tipo.slug); 
+         categoria   = (data[i].categoria==null?'':'<a href="http://videos.telesurtv.net/videos/noticia'+tipo+'/categoria/'+categoria_slug+'">'+categoria_nombre+'</a> <span>&middot;</span> ');
+         fecha    = GetVideoDate(data[i].fecha);
+         titulo      = data[i].titulo;
+         duracion = GetVideoDuration(data[i].duracion);
+         imagenOriginal = data[i].thumbnail_gigante;
+         imagen = imagenOriginal.replace("http:", "");
+         video_slug  = data[i].slug;
+         video_file  = data[i].archivo_url;
+         url      = data[i].url;
+         navegador_url   = data[i].navegador_url;
+         watchVideoFN   = "$().watchVideo(\'"+video_file+"\',\'"+imagen+"\',\'"+categoria_slug+"\',\'"+categoria_nombre+"\',\'"+tipo+"\',\'"+fecha+"\',\'"+titulo+"\',\'"+video_slug+"\');";
+            
+         if(i==0){
+            $FRAME  = '<article class="">';
+            $FRAME += '<div class="" id=""></div>';
+            $FRAME += '<hgroup id=""></hgroup>';
+            $FRAME += '</article>';
+            $ASIDE += '<div class="aside">';
+            
+            VideoInfo = GetVideoInfo(categoria_slug,categoria_nombre,tipo,fecha,titulo,video_file,video_slug);
+         }
+         
+         $ASIDE += '<article class="">';
+         $ASIDE += '<div class="">';
+         //$ASIDE += '<a href="javascript:;" onclick="'+watchVideoFN+'"><img src="/arte/ico-play.png" alt="Telesur" class="icoPlay"></a>';
+         $ASIDE += '<a href="javascript:;" onclick="'+watchVideoFN+'"><img src="'+imagen+'" height="82" alt="Telesur"></a>';
+         $ASIDE += '</div>';
+         $ASIDE += '<div class="overflow">';
+         $ASIDE += '<h5>'+categoria+'<span>'+duracion+'</span></h5>';
+         $ASIDE += '<h4><a href="javascript:;" onclick="'+watchVideoFN+'">'+titulo.slice(0,70)+'</a></h4>';
+         $ASIDE += '</div>';
+         $ASIDE += '</article>';
+         
+         if(i==data.length){
+            $ASIDE += '</div>';
+         }
+   
+      });//END EACH
+      $("#VideosContenedor").append($FRAME+$ASIDE);
+
+      jwplayer("VideoDestacado").setup({
+         file: data[0].archivo_url,
+         image: data[0].thumbnail_gigante.replace("http:", ""),
+         width: "100%",
+         aspectratio: "16:9"
+      });
+      
+      $("#VideohGroup").html(VideoInfo);
+
+   });//END DONE
+   
+   // $().GetCorresponsales();
+   
+}//END GetVideos 
+
+jQuery.fn.peliculas = function(){
+   
+   var path    = "//multimedia.telesurtv.net/api/clip/?callback=?";
+   var categoria  = "";
+   var fecha   = "";
+   var descripcion = "";
+   var $FRAME  = "";
+   var $ASIDE  = "";
+   var tipo = "";
+   
+   $.getJSON(path,{
+      detalle:"completo",
+      seleccionado:"true",
+      ultimo:"5"
+   })
+   .done(function(data){
+      $.each(data,function(i){
+   
+         categoria_slug = (data[i].categoria==null?'':data[i].categoria.slug);
+         categoria_nombre= (data[i].categoria==null?'':data[i].categoria.nombre);
+         tipo     = (data[i].tipo==null?'':data[i].tipo.slug); 
+         categoria   = (data[i].categoria==null?'':'<a href="http://videos.telesurtv.net/videos/noticia'+tipo+'/categoria/'+categoria_slug+'">'+categoria_nombre+'</a> <span>&middot;</span> ');
+         fecha    = GetVideoDate(data[i].fecha);
+         titulo      = data[i].titulo;
+         duracion = GetVideoDuration(data[i].duracion);
+         imagenOriginal = data[i].thumbnail_gigante;
+         imagen = imagenOriginal.replace("http:", "");
+         video_slug  = data[i].slug;
+         video_file  = data[i].archivo_url;
+         url      = data[i].url;
+         navegador_url   = data[i].navegador_url;
+         watchVideoFN   = "$().watchVideo(\'"+video_file+"\',\'"+imagen+"\',\'"+categoria_slug+"\',\'"+categoria_nombre+"\',\'"+tipo+"\',\'"+fecha+"\',\'"+titulo+"\',\'"+video_slug+"\');";
+            
+         if(i==0){
+            $FRAME  = '<article class="">';
+            $FRAME += '<div class="" id=""></div>';
+            $FRAME += '<hgroup id=""></hgroup>';
+            $FRAME += '</article>';
+            $ASIDE += '<div class="aside">';
+            
+            VideoInfo = GetVideoInfo(categoria_slug,categoria_nombre,tipo,fecha,titulo,video_file,video_slug);
+         }
+         
+         $ASIDE += '<article class="">';
+         $ASIDE += '<div class="">';
+         //$ASIDE += '<a href="javascript:;" onclick="'+watchVideoFN+'"><img src="/arte/ico-play.png" alt="Telesur" class="icoPlay"></a>';
+         $ASIDE += '<a href="javascript:;" onclick="'+watchVideoFN+'"><img src="'+imagen+'" height="82" alt="Telesur"></a>';
+         $ASIDE += '</div>';
+         $ASIDE += '<div class="overflow">';
+         $ASIDE += '<h5>'+categoria+'<span>'+duracion+'</span></h5>';
+         $ASIDE += '<h4><a href="javascript:;" onclick="'+watchVideoFN+'">'+titulo.slice(0,70)+'</a></h4>';
+         $ASIDE += '</div>';
+         $ASIDE += '</article>';
+         
+         if(i==data.length){
+            $ASIDE += '</div>';
+         }
+   
+      });//END EACH
+      $("#VideosContenedor").append($FRAME+$ASIDE);
+
+      jwplayer("VideoDestacado").setup({
+         file: data[0].archivo_url,
+         image: data[0].thumbnail_gigante.replace("http:", ""),
+         width: "100%",
+         aspectratio: "16:9"
+      });
+      
+      $("#VideohGroup").html(VideoInfo);
+
+   });//END DONE
+   
+   // $().GetCorresponsales();
+   
+}//END GetVideos 
