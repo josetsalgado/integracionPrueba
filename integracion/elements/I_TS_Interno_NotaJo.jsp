@@ -7,11 +7,10 @@
 <!doctype html>
 <html>
 <head>
-<title>SybarMagazine | Pages | Single Page</title>
+<title></title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 
 </head>
 <body>
@@ -37,18 +36,25 @@
           <div class="row">
             <div class="left_bar">
               <div class="single_leftbar">
-                <h2><span>Recent Post</span></h2>
+                <h2><span>Blogs por categorías</span></h2>
                 <div class="singleleft_inner">
                   <ul class="recentpost_nav wow fadeInDown">
-                    <li><a href="#"><img src="/arte/imagenesJo/150x80.jpg" alt=""></a> <a class="recent_title" href="#"> Curabitur ac dictum nisl eu hendrerit ante</a></li>
-                    <li><a href="#"><img src="/arte/imagenesJo/150x80.jpg" alt=""></a> <a class="recent_title" href="#"> Curabitur ac dictum nisl eu hendrerit ante</a></li>
-                    <li><a href="#"><img src="/arte/imagenesJo/150x80.jpg" alt=""></a> <a class="recent_title" href="#"> Curabitur ac dictum nisl eu hendrerit ante</a></li>
+                  	<cms:include page="../elements/TS_Common_RightColumnJo.jsp" >
+				<cms:param name="template">Opinion</cms:param>
+			</cms:include> 
+                    <%-- c:import url="http://www.telesurtv.net/_static_rankings/static_rankingCategory_blogs.html"/ --%>
                   </ul>
                 </div>
               </div>
               <div class="single_leftbar wow fadeInDown">
-                <h2><span>Side Add</span></h2>
-                <div class="singleleft_inner"> <a href="#"><img src="/arte/imagenesJo/150x600.jpg" alt=""></a></div>
+                <h2><span>Publicidad</span></h2>
+                <div class="singleleft_inner">
+                
+						<cms:include page="TS_Common_Banners.jsp">
+							<cms:param name="template">Home</cms:param>
+							<cms:param name="key">Advert-183x374-a</cms:param>
+						</cms:include>
+                </div>
               </div>
             </div>
           </div>
@@ -58,16 +64,53 @@
             <div class="middle_bar">
               <div class="single_post_area">
                 <ol class="breadcrumb">
-                  <li><a href="#"><i class="fa fa-home"></i>Home<i class="fa fa-angle-right"></i></a></li>
-                  <li><a href="#">Category<i class="fa fa-angle-right"></i></a></li>
-                  <li class="active">Aliquam malesuada diam eget turpis varius</li>
+                  <li><a href="http://devindigo.telesurtv.net/system/modules/com.tfsla.diario.telesur/templates/indexIntegracionJo.jsp"><i class="fa fa-home"></i>Home<i class="fa fa-angle-right"></i></a></li>
+                  <li>
+                      <c:set var="seccionNota" scope="page">
+		          <nt:section-name/>
+		      </c:set>
+		      <a href="http://devindigo.telesurtv.net/seccion/${seccionNota}/index.html">Noticias<i class="fa fa-angle-right"></i></a></li>
+		 <li class="active"><nt:title value="detail"/></li>
                 </ol>
                 <h2 class="post_title wow ">
                     <div class="title">
                           <nt:title value="detail"/>
                     </div>
                 </h2>
-                <a href="#" class="author_name"><i class="fa fa-user"></i>Mohamed Kuddus Mia</a> <a href="#" class="post_date"><i class="fa fa-clock-o"></i>Thursday,December 01,2045</a>
+                <a href="#" class="author_name">
+                    <%-- autor de la nota--%>
+                    <i class="fa fa-user"></i>
+                    <nt:conditional-include oncondition="${news.hideAuthor == 'false'}">
+                        <nt:authors>
+                            <c:set var="internalUser" scope="page"><nt:author-internaluser/></c:set>
+                            <c:set var="authorName" scope="page"><nt:author-name/></c:set>
+                            <c:if test="${internalUser != ''}">
+                                <nt:user username="${internalUser}">
+                                    <meta itemprop="name" content="<nt:user-firstname/> <nt:user-lastname/>"/>
+                                    <nt:user-firstname/> <nt:user-lastname/>
+                                </nt:user>
+                            </c:if>
+			    <c:if test="${internalUser == '' && authorName != ''}">
+                                <meta itemprop="name" content="<nt:author-name/>"/>
+                                <a style="width: auto" class="her" alt="<nt:author-name/>" title="<nt:author-name/>"><nt:author-name/></a>
+                            </c:if>
+                        </nt:authors>
+                    </nt:conditional-include>
+               
+		</a> 
+		<a href="#" class="post_date">
+		    <i class="fa fa-clock-o"></i>
+		    <nt:conditional-include oncondition="${news.hideTime == 'false'}">
+                                    <c:set var="horaNotaSistema" scope="page"><fmt:formatDate pattern="dd-MM-yyyy HH:mm:ss" value="${news.lastModificationDate}" /></c:set>
+                                    <jsp:useBean id="horaNotaSistema" type="java.lang.String" />
+                                                                                               <fmt:setLocale value="es_ES"/>
+                                        <fmt:formatDate pattern="d MMMM yyyy" value="${news.lastModificationDate}" />
+                                        <%  try{ %> <%=CalcularDias(horaNotaSistema)%> <% } catch (Exception e){ %>   <% } %>
+                                        <!--<fmt:formatDate pattern="dd-MM-yyyy HH:mm:ss" value="${news.lastModificationDate}" />-->
+                           </nt:conditional-include>
+		
+		
+		</a>
                 <div class="single_post_content">
                 
                 
@@ -397,13 +440,20 @@
                 </p>   
                 
                 <div class="social_area wow fadeInLeft">
-                  <ul>
+                
+                <%--  compartir en redes socuales --%>
+                                     <cms:include page="TS_Common_RedesSocialesNotaJo.jsp" >
+                                     <cms:param name="link"><nt:link/></cms:param>
+                                     </cms:include>                                     
+                               	 
+                                
+                  <%-- ul>
                     <li><a href="#"><span class="fa fa-facebook"></span></a></li>
                     <li><a href="#"><span class="fa fa-twitter"></span></a></li>
                     <li><a href="#"><span class="fa fa-google-plus"></span></a></li>
                     <li><a href="#"><span class="fa fa-linkedin"></span></a></li>
                     <li><a href="#"><span class="fa fa-pinterest"></span></a></li>
-                  </ul>
+                  </ul --%>
                 </div>
                 <%-- notas relacionadas --%>
                 <div class="related_post">
@@ -461,65 +511,24 @@
           <div class="row">
             <div class="right_bar">
               <div class="single_leftbar wow fadeInDown">
-                <h2><span>Popular Post</span></h2>
+                <h2><span>Nuevas</span></h2>
                 <div class="singleleft_inner">
-                  <ul class="catg3_snav ppost_nav wow fadeInDown">
-                    <li>
-                      <div class="media"> <a href="#" class="media-left"> <img alt="" src="/arte/imagenesJo/70x70.jpg"> </a>
-                        <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a></div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="media"> <a href="#" class="media-left"> <img alt="" src="/arte/imagenesJo/70x70.jpg"> </a>
-                        <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a></div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="media"> <a href="#" class="media-left"> <img alt="" src="/arte/imagenesJo/70x70.jpg"> </a>
-                        <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a></div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="media"> <a href="#" class="media-left"> <img alt="" src="/arte/imagenesJo/70x70.jpg"> </a>
-                        <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a></div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="media"> <a href="#" class="media-left"> <img alt="" src="/arte/imagenesJo/70x70.jpg"> </a>
-                        <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a></div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="media"> <a href="#" class="media-left"> <img alt="" src="/arte/imagenesJo/70x70.jpg"> </a>
-                        <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a></div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="media"> <a href="#" class="media-left"> <img alt="" src="/arte/imagenesJo/70x70.jpg"> </a>
-                        <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a></div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="media"> <a href="#" class="media-left"> <img alt="" src="/arte/imagenesJo/70x70.jpg"> </a>
-                        <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a></div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="media"> <a href="#" class="media-left"> <img alt="" src="/arte/imagenesJo/70x70.jpg"> </a>
-                        <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a></div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="media"> <a href="#" class="media-left"> <img alt="" src="/arte/imagenesJo/70x70.jpg"> </a>
-                        <div class="media-body"> <a href="#" class="catg_title"> Aliquam malesuada diam eget turpis varius</a></div>
-                      </div>
-                    </li>
-                  </ul>
+                    <ul class="catg3_snav ppost_nav wow fadeInDown">
+                        <cms:include page="../elements/TS_Common_RightColumnJo.jsp" >
+				<cms:param name="template">Analisis</cms:param>
+			</cms:include> 
+		    </ul>
+                  
                 </div>
               </div>
               <div class="single_leftbar wow fadeInDown">
-                <h2><span>Side Ad</span></h2>
-                <div class="singleleft_inner"> <a href="#"><img alt="" src="/arte/imagenesJo/262x218.jpg"></a></div>
+                <h2><span>Publicidad</span></h2>
+                <div class="singleleft_inner"> 
+                	<cms:include page="TS_Common_Banners.jsp">
+							<cms:param name="template">Analysis</cms:param>
+							<cms:param name="key">Show-Promotion-220x145-a</cms:param>
+						</cms:include>
+                </div>
               </div>
               <div class="single_leftbar wow fadeInDown">
                 <ul class="nav nav-tabs custom-tabs" role="tablist">
@@ -768,6 +777,96 @@
 
 
 </nt:news>
+
+
+<%!
+    public String CalcularDias(String fechaNota) {
+        Date dateNow = new Date();
+        SimpleDateFormat dateformatddMMyyyy = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        String date_to_string = dateformatddMMyyyy.format(dateNow);
+
+        String fechaInicial = fechaNota;
+        String fechaFinal = date_to_string;
+
+        java.util.GregorianCalendar jCal = new java.util.GregorianCalendar();
+        java.util.GregorianCalendar jCal2 = new java.util.GregorianCalendar();
+        jCal.set(Integer.parseInt(fechaInicial.substring(6, 10)), Integer.parseInt(fechaInicial.substring(3, 5)) - 1, Integer.parseInt(fechaInicial.substring(0, 2)), Integer.parseInt(fechaInicial.substring(11, 13)), Integer.parseInt(fechaInicial.substring(14, 16)), Integer.parseInt(fechaInicial.substring(17, 19)));
+        jCal2.set(Integer.parseInt(fechaFinal.substring(6, 10)), Integer.parseInt(fechaFinal.substring(3, 5)) - 1, Integer.parseInt(fechaFinal.substring(0, 2)), Integer.parseInt(fechaFinal.substring(11, 13)), Integer.parseInt(fechaFinal.substring(14, 16)), Integer.parseInt(fechaFinal.substring(17, 19)));
+
+        long diferencia = jCal2.getTime().getTime() - jCal.getTime().getTime();
+        double minutos = diferencia / (1000 * 60);
+        long horas = (long) (minutos / 60);
+        long minuto = (long) (minutos % 60);
+        long segundos = (long) diferencia % 1000;
+        long dias = horas / 24;
+
+        String[] mesesAnio = new String[12];
+        mesesAnio[0] = "31";
+
+        if (jCal.isLeapYear(jCal.YEAR)) {
+            mesesAnio[1] = "29";
+        } else {
+            mesesAnio[1] = "28";
+        }
+        mesesAnio[2] = "31";
+        mesesAnio[3] = "30";
+        mesesAnio[4] = "31";
+        mesesAnio[5] = "30";
+        mesesAnio[6] = "31";
+        mesesAnio[7] = "31";
+        mesesAnio[8] = "30";
+        mesesAnio[9] = "31";
+        mesesAnio[10] = "30";
+        mesesAnio[11] = "31";
+        int diasRestantes = (int) dias;
+        int totalMeses = 0;
+        int mesActual = jCal.MONTH;
+        for (int i = 0; i <= 11; i++) {
+            if ((mesActual + 1) >= 12) {
+                mesActual = i;
+            }
+            if ((diasRestantes - Integer.parseInt(mesesAnio[mesActual])) >= 0) {
+                totalMeses++;
+                diasRestantes = diasRestantes - Integer.parseInt(mesesAnio[mesActual]);
+                mesActual++;
+            } else {
+                break;
+            }
+        }
+        horas = horas % 24;
+        String salida = "";
+
+        int diaEntero = Integer.parseInt(String.valueOf(diasRestantes));
+        int horasTranscurridas = Integer.parseInt(String.valueOf(horas));
+        int minTranscurridos = Integer.parseInt(String.valueOf(minuto));
+        System.out.println(diaEntero);
+
+        if (diaEntero > 0) {
+
+            salida = "";
+
+        } else {
+
+            if (horasTranscurridas > 1) {
+                salida = "(Hace " + String.valueOf(horas) + " horas " + String.valueOf(minuto) + " minutos)";
+            } else {
+                if ((horasTranscurridas < 2) && (horasTranscurridas != 0)) {
+                    salida = "(Hace " + String.valueOf(horas) + " hora " + String.valueOf(minuto) + " minutos)";
+                } else {
+                    if ((minTranscurridos > 1) || (minTranscurridos == 0)) {
+                        salida = "(Hace " + String.valueOf(minuto) + " minutos)";
+                    } else {
+                        salida = "(Hace " + String.valueOf(minuto) + " minuto)";
+                    }
+
+                }
+            }
+        }
+
+        return salida;
+    }
+%>
+
 
 </body>
 </html>
